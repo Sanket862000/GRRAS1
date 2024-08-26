@@ -14,7 +14,7 @@ pipeline {
         }
         stage ('Deployment') {
             steps {
-                sh 'cp target/REDHAT.war /home/sanket/Documents/devops/apache-tomcat-9.0.93/webapps'
+                sh 'cp target/GRRAS1.war /home/sanket/Documents/devops/apache-tomcat-9.0.93/webapps'
             }
         }
     }
