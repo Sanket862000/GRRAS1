@@ -3,18 +3,18 @@ pipeline {
     stages {
         stage ('chekout') {
             steps {
-                chekout scm
+              git 'https://github.com/Sanket862000/REDHAT.git'   
             }
         }
         stage ('build') {
             steps {
-                  sh '/home/sanket/Documents/devops/apache-tomcat-9.0.93/bin/mvn install'
+                  sh 'mvn install'
 
             }
         }
         stage ('Deployment') {
             steps {
-                sh 'target/GRRAS1.war /home/sanket/Documents/devops/apache-tomcat-9.0.93/webapps'
+                sh 'cp target/REDHAT.war /home/sanket/Documents/devops/apache-tomcat-9.0.93/webapps'
             }
         }
     }
