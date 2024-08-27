@@ -6,7 +6,7 @@ pipeline {
     stages {
         stage ('chekout') {
             steps {
-              git 'https://github.com/Sanket862000/REDHAT.git'   
+              git 'https://github.com/Sanket862000/GRRAS1.git'   
             }
         }
         stage ('build') {
@@ -18,18 +18,20 @@ pipeline {
         stage ('Deployment') {
             steps {
                 script {
-                    if  ( env.ENVIRONMENT = "QA" ){
-                    	 sh 'cp target/GRRAS1.war /home/sanket/Documents/Devops/apache-tomcat-9.0.93/webapps'
-			echo "deployment has be done QA"
-		    }
-			    elif  ( env.ENVIRONMENT = "UAT" ){
-         		 sh'cp target/GRRAS1.war /home/swapnil/Documents/DevOps-Software/apache-tomcat-9.0.79/webapps'
-			echo "deployment has done been UAT"
-			    }
-			    echo "deployment has been done!"
-                            fi
-                }
-            }
-        }
+			 if ( "${env.ENVIRONMENT}" == 'QA' ){
+        	sh 'sh 'cp target/GRRAS1.war /home/sanket/Documents/Devops/apache-tomcat-9.0.93/webapps''
+        	echo "deployment has been done on QA!"
+			 }
+			elif ( "${env.ENVIRONMENT}" == 'UAT' ){
+    		sh 'sh 'cp target/GRRAS1.war /home/sanket/Documents/Devops/apache-tomcat-9.0.93/webapps''
+    		echo "deployment has been done on UAT!"
+			}
+			echo "deployment has been done!"
+			fi
+		}
+	    }
+	}
+
     }
-}
+}	    
+			
